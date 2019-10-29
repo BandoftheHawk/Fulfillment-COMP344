@@ -3,21 +3,20 @@
 
 <?php
 
-$servername = "ash.science.mq.edu.au:22";
-$username = "43236944";
-$password = "VGltbyBKYXJ2";
-$database = "43236944";
-
+$host="localhost";
+$port=3306;
+$socket="";
+$user="root";
+$password="";
+$dbname="comp344ass2";
 // Create connection
-$conn = mysqli_connect($servername, $username, $password);
 
-if (mysqli_connect_errno())
-{
- die("Connection failed to database: " . mysqli_connect_error());
-}
+$conn = new mysqli($host, $user, $password, $dbname, $port, $socket) or die ('Could not connect to the database server' . mysqli_connect_error());
+
+
 
 // Use database
-mysqli_select_db($conn, $database);
+mysqli_select_db($conn, $dbname);
 
 
 ?>

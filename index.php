@@ -21,7 +21,7 @@ include("./db.php");
 
     <!-- Custom styles for this template -->
     <link href="css/shop-item.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -100,11 +100,28 @@ include("./db.php");
                             <th scope="col">Expected Delivery Date</th>
                             <th scope="col">Shopper Notified</th>
                             <th scope="col">Mark as Fulfilled</th>
-                            <th scope="col"></th>
+                            <th scope="col">Print</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                    <?php
+                    
+                   
+                            $sql = "SELECT * FROM shipment WHERE status = 'not_shipped'";
+                            $result = $conn->query($sql);
+                           
+                            if ($result->num_rows > 0) {
+                                // output data of each row
+                                while($row = $result->fetch_assoc()) {
+                                    echo "<tr>". "<th>" . $row["id"] . "</th> " . "<td>" . $row["Shopper_id"] . "</td>" . "</tr>";
+                                }
+                            } else {
+                                echo "0 results";
+                            }
+                            $conn->close();
+
+                        ?>
+                        
                             <th>111189</th>
                             <td>342432</td>
                             <td>242393</td>
@@ -116,7 +133,7 @@ include("./db.php");
                             <td style="text-align:center;"><input type="checkbox" checked></td>
                             <td style="text-align:center;"><input class="form-control" type="checkbox"></td>
                             <td><a class="print-icon" href="#"><i class="fa fas fa-print"></i></a></td>
-                        </tr>
+                        
 
                         <tr>
                             <th>111189</th>
