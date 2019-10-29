@@ -8,8 +8,8 @@
            console.log(rowToPrint);
             let newWin = window.open("");
             newWin.document.write(rowToPrint.outerHTML);
-            newWin.print();
-            newWin.close();
+            // newWin.print();
+            // newWin.close();
         });
     });
 
