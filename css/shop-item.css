@@ -40,7 +40,6 @@ html {
     z-index: 1;
     margin: 2rem auto;
     overflow: auto;
-    height: 75vh;
 }
 
 .table-scroll table {

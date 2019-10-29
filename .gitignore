@@ -1,1 +1,9 @@
 node_modules
+package-lock.json
+.idea/codeStyles/Project.xml
+.idea/dbnavigator.xml
+.idea/Fulfillment-COMP344.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
