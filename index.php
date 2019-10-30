@@ -83,8 +83,8 @@ include("./phpincludes/nav.php");
                 "<td>" . $row["Shopper_id"] . "</td>" .
                 "<td>" . $row["Shopper_id"] . "</td>" .
                 "<td>" . $row["Shopper_id"] . "</td>" .
-                "<td>" . $row["Shopper_id"] . "</td>" .
-                "<td>" . $row["Shopper_id"] . "</td>" .
+                "<td>" . " <div class='form-check'><input class='form-check-input' type='checkbox' value='' id='defaultCheck1'></div>" . "</td>" .
+                "<td>" . "<a class='print-icon' href='#'><i class='fa fas fa-print'></i></a>" . "</td>" .
                 
                 "</tr>";
             }
