@@ -1,0 +1,32 @@
+
+h1{
+    font-size:1.5rem!important;
+    margin: 1.5rem 0;
+}
+.container-fluid{
+    min-height: calc( 100vh - 192px);
+}
+.table-nav{
+    display:flex;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+.table-nav button{
+    margin-bottom: 1.5rem;
+}
+.pagination-nav{
+    display:flex;
+    justify-content: space-between;
+}
+.pagination-nav span{
+    line-height:38px;
+}
+.pagination-nav .flex{
+    display:flex;
+}
+
+@media print {
+    td {
+        display: block;
+    }
+}

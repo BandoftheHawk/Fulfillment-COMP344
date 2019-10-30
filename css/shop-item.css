@@ -8,7 +8,7 @@ body {
 }
 
 .pbg {
-    background-color: #44DEB0;
+    background-color: #333;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -35,7 +35,7 @@ html {
     margin: 1em auto;
 }
 
-.table-scroll {
+/* .table-scroll {
     position: relative;
     width: 100%;
     z-index: 1;
@@ -74,7 +74,7 @@ html {
 }
 
 /* safari and ios need the tfoot itself to be position:sticky also */
-.table-scroll tfoot,
+/* .table-scroll tfoot,
 .table-scroll tfoot th,
 .table-scroll tfoot td {
     position: -webkit-sticky;
@@ -89,8 +89,8 @@ a:focus {
     background: red;
 }
 
-/* testing links*/
-th:first-child {
+testing links*/
+/* th:first-child {
     position: -webkit-sticky;
     position: sticky;
     left: 0;
@@ -105,20 +105,10 @@ tfoot th:first-child {
 
 tbody tr:nth-child(odd) {
     background-color: #ddd !important;
-}
+}  */
 .print-icon{
     font-size:24px;
 }
 .print-icon:focus{
     background-color:transparent;
-}
-
-h1{
-    margin-top: 1rem;
-}
-
-@media print {
-    td {
-        display: block;
-    }
 }
