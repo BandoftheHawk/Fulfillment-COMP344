@@ -16,11 +16,8 @@ print_r($data["orderids"][0]);
           if (mysqli_query($conn, $sql) === TRUE) {
             // Send OK message if 200 is okay
             http_response_code(200);
-
           }else {
-            
-              echo("Error description: " . mysqli_error($conn));
-
+            echo("Error description: " . mysqli_error($conn));
             http_response_code(404);
           }
     }

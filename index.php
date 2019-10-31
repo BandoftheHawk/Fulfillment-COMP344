@@ -5,7 +5,7 @@ if (isset($_GET['pageno'])) {
 } else {
     $pageno = 1;
 }
-$no_of_records_per_page = 2;
+$no_of_records_per_page = 1;
 $offset = ($pageno-1) * $no_of_records_per_page;
 ?>
 
@@ -68,8 +68,9 @@ include("./phpincludes/nav.php");
     </thead>
   <tbody>
     <?php
-        $sql = "SELECT * FROM Shipment WHERE status = 'not_shipped' LIMIT $offset, $no_of_records_per_page";
-        $result = $conn->query($sql);
+    $sql = "SELECT Shipment.*, DeveliveryCompany.company_name, Shopper.sh_username from Shipment left join Shopper on Shipment.Shopper_id = Shopper.shopper_id left join Shaddr  on Shipment.Shaddr_id = Shaddr.shaddr_id left join DeveliveryCompany on Shipment.Delivery_Company_id = DeveliveryCompany.id where status = 'not_shipped' LIMIT $offset, $no_of_records_per_page";
+
+    $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             // output data of each row
