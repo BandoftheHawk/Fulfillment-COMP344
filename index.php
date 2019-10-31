@@ -5,8 +5,13 @@ if (isset($_GET['pageno'])) {
 } else {
   $pageno = 1;
 }
+<<<<<<< HEAD
 $no_of_records_per_page = 1;
 $offset = ($pageno - 1) * $no_of_records_per_page;
+=======
+$no_of_records_per_page = 3;
+$offset = ($pageno-1) * $no_of_records_per_page;
+>>>>>>> eb1ddaab3ec940a14bbad6c0944fa395671de44a
 ?>
 
 <!DOCTYPE html>
@@ -79,14 +84,22 @@ include("./phpincludes/header.php");
           <th scope="col">Mark as Fulfilled</th>
           <th scope="col">View Print Label</th>
         </tr>
+<<<<<<< HEAD
       </thead>
       <tbody>
         <?php
         $sql = "SELECT Shipment.*, DeveliveryCompany.company_name, Shopper.sh_username from Shipment left join Shopper on Shipment.Shopper_id = Shopper.shopper_id left join Shaddr  on Shipment.Shaddr_id = Shaddr.shaddr_id left join DeveliveryCompany on Shipment.Delivery_Company_id = DeveliveryCompany.id where status = 'not_shipped' LIMIT $offset, $no_of_records_per_page";
+=======
+    </thead>
+  <tbody>
+    <?php
+    $sql = "SELECT Shipment.*, DeveliveryCompany.company_name, Shopper.sh_username, CONCAT(Shaddr.sh_street1, ' ' , Shaddr.sh_city,' ',Shaddr.sh_state, ' ' ,Shaddr.sh_postcode, ' ', Shaddr.sh_country) as user_address, ShipmentItems.Order_id FROM Shipment left join Shopper on Shipment.Shopper_id = Shopper.shopper_id  left join Shaddr  on Shipment.Shaddr_id = Shaddr.shaddr_id  left join DeveliveryCompany on Shipment.Delivery_Company_id = DeveliveryCompany.id left join ShipmentItems on ShipmentItems.Shipment_id = Shipment.id where status = 'not_shipped' LIMIT $offset, $no_of_records_per_page";
+>>>>>>> eb1ddaab3ec940a14bbad6c0944fa395671de44a
 
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
+<<<<<<< HEAD
           // output data of each row
           while ($row = $result->fetch_assoc()) {
             echo "<tr>" . "<th class='shipment-id-row'>" . $row["id"] . "</th> " .
@@ -103,6 +116,24 @@ include("./phpincludes/header.php");
 
               "</tr>";
           }
+=======
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<tr>". "<th class='shipment-id-row'>" . $row["id"] . "</th> " .
+                "<td>" . $row["Order_id"] . "</td>" . 
+                "<td>" . $row["Shopper_id"] . "</td>" . 
+                "<td>" . $row["user_address"] . "</td>" .
+                "<td>" . $row["Delivery_Company_id"] . "</td>" .
+                "<td>" . $row["company_name"] . "</td>" .
+                "<td>" . $row["picked_up_at"] . "</td>" .
+                "<td>" . $row["expected_delivery_date"] . "</td>" .
+                "<td>" . $row["shopper_notified"] . "</td>" .
+                "<td>" . " <div class='form-check'><input class='form-check-input fulfillable-checkbox' type='checkbox' ></div>" . "</td>" .
+                "<td>" . "<a class='print-icon' href='#'><i class='fa fas fa-print'></i></a>" . "</td>" .
+                
+                "</tr>";
+            }
+>>>>>>> eb1ddaab3ec940a14bbad6c0944fa395671de44a
         } else {
           echo "0 results";
         }
