@@ -13,4 +13,5 @@
     <link href="css/shop-item.css" rel="stylesheet">
     <link href="css/table.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="vendor/jquery/jquery.min.js"></script>
 </head>

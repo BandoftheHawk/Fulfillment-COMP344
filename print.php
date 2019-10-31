@@ -18,7 +18,7 @@ left join ShipmentItems on Shipment.id = ShipmentItems.Shipment_id
 left join `Order` on `Order`.Order_id = ShipmentItems.Order_id
 left join OrderProduct on `Order`.Order_id = OrderProduct.OP_Order_id
 left join Product on OrderProduct.OP_prod_id = Product.prod_id
-where Shipment_id = " + $_GET['shipmentId'];
+where Shipment_id =". (int)$_GET['shipmentId'];
 
 
 $data = $conn->query($shipment);
@@ -34,7 +34,7 @@ $s = $conn->query($shipment)->fetch_assoc();
   <div class="printable">
     <div class="header">
       <h1>Merchant Server</h1>
-      <div class="meta"> Delivery To <?php echo $s['sh_title'] . ' ' . $s['sh_firstname'] . ' ' . $s['sh_lastname'] ?></div>
+      <div class="meta"> Delivery To <?php echo $s['sh_title'] . ' ' . $s['sh_firstname'] . ' ' . $s['sh_familyname'] ?></div>
     </div>
     <div class="info">
       <div class="recipient">
@@ -66,7 +66,7 @@ $s = $conn->query($shipment)->fetch_assoc();
           <li>
             <div>Name</div>
             <div>
-              <?php echo $s['sh_title'] . ' ' . $s['sh_firstname'] . ' ' . $s['sh_lastname'] ?>
+              <?php echo $s['sh_title'] . ' ' . $s['sh_firstname'] . ' ' . $s['sh_familyname'] ?>
             </div>
           </li>
           <li>
@@ -95,6 +95,7 @@ $s = $conn->query($shipment)->fetch_assoc();
         </th>
       </tr>
       <?php
+
       while ($row = $data->fetch_assoc()) {
         echo "<tr>" .
           "<td>" . $row["prod_sku"] . "</td>" .

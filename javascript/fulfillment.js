@@ -5,15 +5,19 @@
     icons.forEach((icon) => {
         icon.addEventListener('click', (e) => {
             e.preventDefault();
-            // Create Print view for selected order
-            let rowToPrint = e.target.parentNode.parentNode.parentNode;
-           console.log(rowToPrint);
-            let newWin = window.open("");
-            newWin.document.write(rowToPrint.outerHTML);
-            newWin.print();
-            newWin.close();
+            let rowToPrintId = event.target.parentNode.parentNode.parentNode.children[0].innerHTML;
+            console.log(rowToPrintId);
+            $('#shipment').load('./print.php?shipmentId='+rowToPrintId,function(){
+                var printContent = document.getElementById('shipment');
+                var WinPrint = window.open('', '', 'width=1000,height=650');
+                WinPrint.document.write(printContent.innerHTML);
+                WinPrint.document.close();
+                WinPrint.focus();
+                WinPrint.print();
+            });          
         });
     });
+    
 
     // Add Change event listener to print 
     let checkboxes = document.querySelectorAll('.fulfillable-checkbox');
@@ -52,3 +56,7 @@
     });
     
 })();
+
+$(document).ready(function(){
+   
+});
