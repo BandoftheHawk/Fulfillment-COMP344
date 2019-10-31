@@ -5,7 +5,7 @@ if (isset($_GET['pageno'])) {
 } else {
     $pageno = 1;
 }
-$no_of_records_per_page = 1;
+$no_of_records_per_page = 2;
 $offset = ($pageno-1) * $no_of_records_per_page;
 ?>
 
@@ -23,7 +23,7 @@ include("./phpincludes/nav.php");
     <div class="container-fluid">
             <div class="table-nav">
                 <div><h1>Orders Needing Fulfillment</h1></div>
-                <div><button>Process Marked as Fulfilled</button></div>
+                <div><button id="process">Process Marked as Fulfilled</button></div>
             </div>
            
     <?php
@@ -83,7 +83,7 @@ include("./phpincludes/nav.php");
                 "<td>" . $row["Shopper_id"] . "</td>" .
                 "<td>" . $row["Shopper_id"] . "</td>" .
                 "<td>" . $row["Shopper_id"] . "</td>" .
-                "<td>" . " <div class='form-check'><input class='form-check-input' type='checkbox' value='' id='defaultCheck1'></div>" . "</td>" .
+                "<td>" . " <div class='form-check'><input class='form-check-input fulfillable-row' type='checkbox' ></div>" . "</td>" .
                 "<td>" . "<a class='print-icon' href='#'><i class='fa fas fa-print'></i></a>" . "</td>" .
                 
                 "</tr>";
@@ -111,6 +111,7 @@ include("./phpincludes/nav.php");
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="javascript/fulfillment.js"></script>
+
 </body>
 
 </html>
