@@ -13,7 +13,11 @@
                 WinPrint.document.write(printContent.innerHTML);
                 WinPrint.document.close();
                 WinPrint.focus();
-                WinPrint.print();
+                setTimeout(() => {
+                    WinPrint.print();
+                    WinPrint.close();
+                }, 200)
+                
             });          
         });
     });

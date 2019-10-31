@@ -1,22 +1,28 @@
 <?php
+// Include DB Conection
 include("./phpincludes/db.php");
+// User Query String to determine pagination
 if (isset($_GET['pageno'])) {
   $pageno = $_GET['pageno'];
 } else {
   $pageno = 1;
 }
+// Set number of recrods to display in pagination
 $no_of_records_per_page = 3;
+// Set records to query from
 $offset = ($pageno-1) * $no_of_records_per_page;
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <?php
+// CSS, Javascript and Page Title files
 include("./phpincludes/header.php");
 ?>
 
 <body>
   <?php
+  // Header Navigation
   include("./phpincludes/nav.php");
   ?>
   <!-- Page Content -->
@@ -29,9 +35,11 @@ include("./phpincludes/header.php");
     </div>
 
     <?php
+    // Get Total number of rows that are unfilfilled
     $total_pages_sql = "SELECT COUNT(*) FROM Shipment WHERE status = 'not_shipped'";
     $result = mysqli_query($conn, $total_pages_sql);
     $total_rows = mysqli_fetch_array($result)[0];
+    // Get total pages
     $total_pages = ceil($total_rows / $no_of_records_per_page);
     ?>
     <nav class="pagination-nav">
@@ -39,7 +47,9 @@ include("./phpincludes/header.php");
         <span class="total-rows"><?php echo $total_rows . " Unfulfilled Orders Found" ?></span>
       </div>
       <div class="flex">
+        <!-- Number of pages render !-->
         <span>Page: <?php echo $pageno . " of " . $total_pages ?>&nbsp;</span>
+        <!-- Pagination buttons !-->
         <ul class="pagination justify-content-end">
           <li class="<?php if ($pageno <= 1) {
                         echo 'disabled';
@@ -62,7 +72,7 @@ include("./phpincludes/header.php");
         </ul>
       </div>
     </nav>
-
+    <!-- Table Header !-->
     <table class="table table-hover table-bordered ">
       <thead>
         <tr>
@@ -70,7 +80,6 @@ include("./phpincludes/header.php");
           <th scope="col">Order ID</th>
           <th scope="col">Shopper ID</th>
           <th scope="col">Shopper Address</th>
-          <!--         <th scope="col">Timestamp</th> -->
           <th scope="col">Delivery Company ID</th>
           <th scope="col">Delivery Company Name</th>
           <th scope="col">Pick Up Date</th>
@@ -82,12 +91,13 @@ include("./phpincludes/header.php");
     </thead>
   <tbody>
     <?php
+    // Get unfilled shipment items with related data, including delivery company, address and order id
     $sql = "SELECT Shipment.*, DeveliveryCompany.company_name, Shopper.sh_username, CONCAT(Shaddr.sh_street1, ' ' , Shaddr.sh_city,' ',Shaddr.sh_state, ' ' ,Shaddr.sh_postcode, ' ', Shaddr.sh_country) as user_address, ShipmentItems.Order_id FROM Shipment left join Shopper on Shipment.Shopper_id = Shopper.shopper_id  left join Shaddr  on Shipment.Shaddr_id = Shaddr.shaddr_id  left join DeveliveryCompany on Shipment.Delivery_Company_id = DeveliveryCompany.id left join ShipmentItems on ShipmentItems.Shipment_id = Shipment.id where status = 'not_shipped' LIMIT $offset, $no_of_records_per_page";
 
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            // output data of each row
+            // render each row data with relted data
             while($row = $result->fetch_assoc()) {
                 echo "<tr>". "<th class='shipment-id-row'>" . $row["id"] . "</th> " .
                 "<td>" . $row["Order_id"] . "</td>" . 
@@ -126,7 +136,7 @@ include("./phpincludes/header.php");
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="javascript/fulfillment.js"></script>
-<div id="shipment"></div>
+<div style="display: none;" id="shipment"></div>
 
 </body>
 
