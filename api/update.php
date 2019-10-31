@@ -2,27 +2,25 @@
 
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Max-Age: 3600");
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 include("../phpincludes/db.php");
 
-function sanitize($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
+$data = json_decode(file_get_contents('php://input'), true);
+$orders = $data["orderids"];
+print_r($data["orderids"][0]);
 
-echo $_POST['orderids'];
-
-   for ($x = 0; $x < count($data); $x++) {
-       $sql2 = "UPDATE SET `shipment` (`status`) VALUES ('shipped') WHERE orderid = '$data[$x]'";
-          if (mysqli_query($conn, $sql2) === TRUE) {
+   for ($x = 0; $x < count($orders); $x++) {
+     $string = $data["orderids"][$x];
+     
+       $sql = "UPDATE `Shipment` SET `status` = 'shipped' WHERE id = $string";
+          if (mysqli_query($conn, $sql) === TRUE) {
             // Send OK message if 200 is okay
             http_response_code(200);
+
           }else {
-            // Send error if issue with connection
+            
+              echo("Error description: " . mysqli_error($conn));
+
             http_response_code(404);
           }
     }

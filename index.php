@@ -27,7 +27,7 @@ include("./phpincludes/nav.php");
             </div>
            
     <?php
-        $total_pages_sql = "SELECT COUNT(*) FROM shipment WHERE status = 'not_shipped'";
+        $total_pages_sql = "SELECT COUNT(*) FROM Shipment WHERE status = 'not_shipped'";
         $result = mysqli_query($conn,$total_pages_sql);
         $total_rows = mysqli_fetch_array($result)[0];
         $total_pages = ceil($total_rows / $no_of_records_per_page);
@@ -68,7 +68,7 @@ include("./phpincludes/nav.php");
     </thead>
   <tbody>
     <?php
-        $sql = "SELECT * FROM shipment WHERE status = 'not_shipped' LIMIT $offset, $no_of_records_per_page";
+        $sql = "SELECT * FROM Shipment WHERE status = 'not_shipped' LIMIT $offset, $no_of_records_per_page";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

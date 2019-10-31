@@ -37,7 +37,7 @@
     document.querySelector('#process').addEventListener('click', (e) => {
         const url = '/api/update.php';
         const data = { orderids: markedAsFulfilled };
-
+        console.log(data);
         fetch(url, {  
             method: 'POST',  
              body: JSON.stringify(data)
@@ -47,6 +47,7 @@
           })
           .then(function (body) {
             console.log(body);
+            location.reload(true);
           });
     });
     

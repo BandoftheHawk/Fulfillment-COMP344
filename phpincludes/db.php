@@ -1,10 +1,10 @@
 <?php
 
-$host="localhost";
+$host="mq.ck5iokhw5uys.ap-southeast-2.rds.amazonaws.com";
 $port=3306;
 $socket="";
-$user="root";
-$password="";
+$user="admin";
+$password="wearegood";
 $dbname="comp344ass2";
 // Create connection
 
