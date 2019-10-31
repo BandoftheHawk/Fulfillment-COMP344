@@ -4,7 +4,7 @@ h1{
     margin: 1.5rem 0;
 }
 .container-fluid{
-    min-height: calc( 100vh - 192px);
+    min-height: calc(100vh - 120px);
 }
 .table-nav{
     display:flex;
