@@ -1,5 +1,9 @@
 <?php include("./phpincludes/db.php"); ?>
 <?PHP
+// Based on the give DB structure, we need to query our shipment and join 
+// Products, DeliveryCompany, Shopper, Shopper Address, OrderProduct and Order information
+// To be able to create the view design
+
 $shipment = "select distinct
        Shipment.*,
        Product.*,
@@ -18,7 +22,7 @@ left join ShipmentItems on Shipment.id = ShipmentItems.Shipment_id
 left join `Order` on `Order`.Order_id = ShipmentItems.Order_id
 left join OrderProduct on `Order`.Order_id = OrderProduct.OP_Order_id
 left join Product on OrderProduct.OP_prod_id = Product.prod_id
-where Shipment_id =". (int)$_GET['shipmentId'];
+where Shipment_id =" . (int) $_GET['shipmentId'];
 
 
 $data = $conn->query($shipment);
@@ -97,6 +101,7 @@ $s = $conn->query($shipment)->fetch_assoc();
       <?php
 
       while ($row = $data->fetch_assoc()) {
+        // fetch assoc will assign db col names to each array index
         echo "<tr>" .
           "<td>" . $row["prod_sku"] . "</td>" .
           "<td>" . $row["prod_name"] . "</td>" .
