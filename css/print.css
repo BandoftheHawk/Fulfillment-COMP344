@@ -1,0 +1,89 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto&display=swap';
+body {
+	background: #f3f3f3;
+	padding: 0;
+	margin: 0;
+}
+.printable {
+	font-family: 'Roboto', sans-serif;
+	display: flex;
+	flex-flow: column;
+	width: 850px;
+	margin-top: 20px;
+	margin: 0 auto;
+}
+.header {
+	width: 100%;
+	text-align: center;
+}
+.header h1 {
+	color: purple;
+	font-size: 6rem;
+	font-weight: 900;
+	margin: 0;
+	padding: 0;
+}
+.header .meta {
+	font-weight: 800;
+}
+
+.info {
+	display: flex;
+	flex-flow: row;
+	margin-top: 50px;
+	border-top: dashed 3px #e7e7e7;
+	justify-content: space-between;
+}
+.recipient {
+	width: 100%;
+	margin-right: 10px;
+}
+.contact {
+	width: 100%;
+}
+.info ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.info ul li {
+	display: flex;
+	align-content: space-between;
+	justify-content: space-between;
+	flex-flow: row;
+	padding: 10px;
+	margin: 5px 0;
+	background: #fff;
+	border-radius: 5px;
+}
+.info ul li div:first-of-type {
+	font-weight: 800;
+	width: 300px;
+}
+.recipient ul li div:nth-of-type(2) {
+	text-align: left;
+	width: 100%;
+}
+.tear {
+	margin-top: 30px;
+	padding-bottom: 5px;
+	text-align: center;
+	border-bottom: dashed 2px #333;
+}
+
+table {
+	margin-top: 10px;
+	background: #fff;
+	padding: 5px;
+	width: 100%;
+	border-radius: 5px;
+}
+table th {
+	text-align: left;
+	border-bottom: solid 1px #f4f4f4;
+	padding-bottom: 10px;
+}
+table td {
+	margin-top: 10px;
+	padding: 10px;
+}

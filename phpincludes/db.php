@@ -12,6 +12,3 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket) or die ('Co
 
 // Use database
 mysqli_select_db($conn, $dbname);
-
-
-?>
