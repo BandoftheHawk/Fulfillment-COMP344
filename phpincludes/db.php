@@ -1,6 +1,3 @@
-<html>
-<body>
-
 <?php
 
 $host="localhost";
@@ -18,6 +15,3 @@ mysqli_select_db($conn, $dbname);
 
 
 ?>
-
-</body>
-</html>

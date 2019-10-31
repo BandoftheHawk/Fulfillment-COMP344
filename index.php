@@ -74,7 +74,7 @@ include("./phpincludes/nav.php");
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                echo "<tr>". "<th>" . $row["id"] . "</th> " .
+                echo "<tr>". "<th class='shipment-id-row'>" . $row["id"] . "</th> " .
                 "<td>" . $row["Shopper_id"] . "</td>" . 
                 "<td>" . $row["Shopper_id"] . "</td>" . 
                 "<td>" . $row["Shopper_id"] . "</td>" .
@@ -83,7 +83,7 @@ include("./phpincludes/nav.php");
                 "<td>" . $row["Shopper_id"] . "</td>" .
                 "<td>" . $row["Shopper_id"] . "</td>" .
                 "<td>" . $row["Shopper_id"] . "</td>" .
-                "<td>" . " <div class='form-check'><input class='form-check-input fulfillable-row' type='checkbox' ></div>" . "</td>" .
+                "<td>" . " <div class='form-check'><input class='form-check-input fulfillable-checkbox' type='checkbox' ></div>" . "</td>" .
                 "<td>" . "<a class='print-icon' href='#'><i class='fa fas fa-print'></i></a>" . "</td>" .
                 
                 "</tr>";
