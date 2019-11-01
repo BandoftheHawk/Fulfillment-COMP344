@@ -3,7 +3,7 @@
 include("./phpincludes/db.php");
 // User Query String to determine pagination
 if (isset($_GET['pageno'])) {
-  $pageno = $_GET['pageno'];
+  $pageno = (int)$_GET['pageno'];
 } else {
   $pageno = 1;
 }
