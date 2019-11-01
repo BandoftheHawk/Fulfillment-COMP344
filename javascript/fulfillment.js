@@ -45,7 +45,7 @@
     // Attempt to fulfill marked orders in marked orders array
     document.querySelector('#process').addEventListener('click', (e) => {
         const url = '/api/update.php'; // Our business logic to change shipment status 
-        const data = { orderids: markedAsFulfilled }; // Array of shipment ids
+        const data = { shipmentIds: markedAsFulfilled }; // Array of shipment ids
         fetch(url, {  
             method: 'POST',  
             body: JSON.stringify(data)

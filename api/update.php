@@ -6,11 +6,11 @@ header("Access-Control-Allow-Methods: POST");
 include("../phpincludes/db.php");
 
 $data = json_decode(file_get_contents('php://input'), true);
-$orders = $data["orderids"];
-print_r($data["orderids"][0]);
+$orders = $data["shipmentIds"];
+print_r($data["shipmentIds"][0]);
 
    for ($x = 0; $x < count($orders); $x++) {
-     $string = $data["orderids"][$x];
+     $string = $data["shipmentIds"][$x];
      
        $sql = "UPDATE `Shipment` SET `status` = 'shipped' WHERE id = $string";
           if (mysqli_query($conn, $sql) === TRUE) {
