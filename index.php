@@ -92,7 +92,7 @@ include("./phpincludes/header.php");
   <tbody>
     <?php
     // Get unfilled shipment items with related data, including delivery company, address and order id
-    $sql = "SELECT Shipment.*, DeveliveryCompany.company_name, Shopper.sh_username, CONCAT(Shaddr.sh_street1, ' ' , Shaddr.sh_city,' ',Shaddr.sh_state, ' ' ,Shaddr.sh_postcode, ' ', Shaddr.sh_country) as user_address, ShipmentItems.Order_id FROM Shipment left join Shopper on Shipment.Shopper_id = Shopper.shopper_id  left join Shaddr  on Shipment.Shaddr_id = Shaddr.shaddr_id  left join DeveliveryCompany on Shipment.Delivery_Company_id = DeveliveryCompany.id left join ShipmentItems on ShipmentItems.Shipment_id = Shipment.id where status = 'not_shipped' LIMIT $offset, $no_of_records_per_page";
+    $sql = "SELECT DISTINCT Shipment.*, DeveliveryCompany.company_name, Shopper.sh_username, CONCAT(Shaddr.sh_street1, ' ' , Shaddr.sh_city,' ',Shaddr.sh_state, ' ' ,Shaddr.sh_postcode, ' ', Shaddr.sh_country) as user_address, ShipmentItems.Order_id FROM Shipment left join Shopper on Shipment.Shopper_id = Shopper.shopper_id  left join Shaddr  on Shipment.Shaddr_id = Shaddr.shaddr_id  left join DeveliveryCompany on Shipment.Delivery_Company_id = DeveliveryCompany.id left join ShipmentItems on ShipmentItems.Shipment_id = Shipment.id where status = 'not_shipped' LIMIT $offset, $no_of_records_per_page";
 
         $result = $conn->query($sql);
 
